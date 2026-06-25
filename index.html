@@ -2,219 +2,558 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Gujarati Trader</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gujarati Trader — India's Trusted Stock Market Community</title>
 
-<!-- FONT AWESOME -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- SEO -->
+<meta name="description" content="Join Gujarati Trader — India's most trusted stock market community. Free intraday signals, NIFTY & BANKNIFTY calls, options analysis and smart risk management.">
+<meta name="theme-color" content="#05070d">
+<meta name="author" content="Gujarati Trader">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gujarati Trader — Stock Market Community">
+<meta property="og:description" content="Free Signals • Daily Analysis • Smart Risk Management">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://uploads.onecompiler.io/447v8k97f/44jaaubcn/WhatsApp%20Image%202026-04-03%20at%2016.20.42.jpeg">
+
+<!-- Favicon -->
+<link rel="icon" href="https://uploads.onecompiler.io/447v8k97f/44jaaubcn/WhatsApp%20Image%202026-04-03%20at%2016.20.42.jpeg">
+
+<!-- Preconnect + Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+!function(f,b,e,v,n,t,s){
+  if(f.fbq)return;
+  n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;
+  n.push=n;
+  n.loaded=!0;
+  n.version='2.0';
+  n.queue=[];
+  t=b.createElement(e);
+  t.async=!0;
+  t.src=v;
+  s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s);
+}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1368720328507773');
-fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1368720328507773&ev=PageView&noscript=1"
-/></noscript>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=1368720328507773&ev=PageView&noscript=1" alt="">
+</noscript>
 <!-- End Meta Pixel Code -->
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
+:root{
+  --bg:#05070d;
+  --card-bg:rgba(255, 255, 255, 0.03);
+  --border:rgba(255, 255, 255, 0.08);
+  --accent-cyan:#00c6ff;
+  --accent-green:#00ff9d;
+  --accent-pink:#ff0080;
+  --accent-purple:#8e2de2;
+  --text:#ffffff;
+  --text-muted:#a0a5b0;
+}
+
+html{scroll-behavior:smooth}
+
 body{
-  font-family:'Poppins',sans-serif;
-  background:#000;
-  color:#fff;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
   text-align:center;
+  min-height:100vh;
+  line-height:1.5;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Animated Background Orbs */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.4;
+}
+body::before {
+  width: 400px; height: 400px;
+  background: var(--accent-purple);
+  top: -100px; left: -100px;
+  animation: float 8s ease-in-out infinite;
+}
+body::after {
+  width: 500px; height: 500px;
+  background: var(--accent-cyan);
+  bottom: -150px; right: -150px;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(50px, 30px); }
+}
+
+/* MARKET TICKER */
+.ticker {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.ticker-symbol { color: var(--text-muted); margin-right: 8px; }
+.ticker-price { color: var(--text); margin-right: 8px; }
+.ticker-change.up { color: var(--accent-green); }
+.ticker-change.down { color: var(--accent-pink); }
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* HERO */
 .hero{
-  padding:40px 20px 30px;
+  padding:50px 20px 30px;
+  position: relative;
 }
 
-/* LOGO */
+.logo-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 24px;
+}
+
+.logo-glow {
+  position: absolute;
+  inset: -10px;
+  background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink), var(--accent-cyan));
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 0.6;
+  animation: rotate 4s linear infinite;
+  z-index: 0;
+}
+
 .hero img{
-  width:130px;
-  height:130px;
+  position: relative;
+  width: 140px;
+  height: 140px;
   border-radius:50%;
   object-fit:cover;
-  border:3px solid rgba(255,255,255,0.2);
-  box-shadow:
-    0 0 20px rgba(255,215,0,0.8),
-    0 0 40px rgba(0,198,255,0.4);
-  margin-bottom:16px;
+  border:4px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  z-index: 1;
 }
 
-/* NAME */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 255, 157, 0.1);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  color: var(--accent-green);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.live-dot {
+  width: 8px; height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 157, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 255, 157, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 157, 0); }
+}
+
 .trader-name{
-  font-size:26px;
-  font-weight:800;
-  margin-bottom:14px;
-  background:linear-gradient(90deg,#00c6ff,#8e2de2,#ff0080);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:12px;
+  background: linear-gradient(90deg, #fff 0%, #a0a5b0 100%);
   -webkit-background-clip:text;
+  background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-/* CTA */
-.cta{
-  display:inline-block;
-  width:100%;
-  max-width:360px;
-  padding:16px;
-  margin:0 auto 22px;
-  font-size:17px;
-  font-weight:800;
-  border-radius:50px;
-  background:linear-gradient(90deg,#ff0080,#8e2de2,#00c6ff);
-  color:#fff;
-  text-decoration:none;
-  box-shadow:0 10px 30px rgba(0,0,0,.7);
-  transition:.2s ease;
-}
-.cta:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 30px rgba(0,198,255,.9);
-}
-
-/* TITLE */
 .hero h1{
-  font-size:30px;
-  font-weight:800;
+  font-size:20px;
+  font-weight:600;
   margin-bottom:8px;
+  color: var(--text);
+  line-height: 1.4;
 }
 
 .hero p{
   font-size:15px;
-  color:#ccc;
+  color:var(--text-muted);
+  margin-bottom: 28px;
 }
 
-/* INFO */
-.info{
-  padding:28px 20px;
-}
-
-.card{
-  background:linear-gradient(180deg,#0f1629,#05070d);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 0 30px rgba(0,255,255,.12);
-}
-
-.point{
+/* MAIN CTA */
+.cta{
   display:flex;
-  gap:14px;
   align-items:center;
-  margin:14px 0;
+  justify-content:center;
+  gap: 10px;
+  width:100%;
+  max-width:380px;
+  padding:18px 24px;
+  margin:0 auto 40px;
+  font-size:16px;
+  font-weight:800;
+  border-radius:16px;
+  background:linear-gradient(90deg,#00c6ff,#8e2de2);
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 10px 40px rgba(0, 198, 255, 0.3);
+  transition:all .3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.point i{
-  font-size:18px;
-  color:#00c6ff;
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+.cta:hover::before { left: 100%; }
+
+.cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 50px rgba(0, 198, 255, 0.5);
 }
 
-.point span{
-  font-size:15px;
-  text-align:left;
+/* FEATURES */
+.info{
+  padding:20px 20px 120px; /* Extra padding for sticky bottom */
+  max-width:600px;
+  margin:0 auto;
 }
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.section-title::before, .section-title::after {
+  content: '';
+  width: 30px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan));
+}
+.section-title::after { background: linear-gradient(90deg, var(--accent-cyan), transparent); }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 198, 255, 0.3);
+  background: rgba(0, 198, 255, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(0,198,255,0.1), rgba(142,46,226,0.1));
+  border-radius: 12px;
+  font-size: 20px;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.feature-text h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.feature-text p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* STICKY MOBILE CTA */
+.sticky-cta {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(5, 7, 13, 0.8);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  padding: 12px 20px;
+  z-index: 100;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.sticky-cta-text {
+  text-align: left;
+}
+.sticky-cta-text h4 { font-size: 14px; font-weight: 700; color: var(--text); }
+.sticky-cta-text span { font-size: 12px; color: var(--text-muted); }
+.sticky-cta-btn {
+  background: linear-gradient(90deg,#00c6ff,#8e2de2);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: transform 0.2s;
+}
+.sticky-cta-btn:active { transform: scale(0.95); }
 
 /* FOOTER */
 .footer{
-  padding:20px 10px;
-  font-size:13px;
-  color:#aaa;
+  padding:30px 20px;
+  font-size:12px;
+  color:#666;
+  background: #030408;
+  border-top: 1px solid var(--border);
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+  .sticky-cta { display: none; } /* Hide sticky on desktop */
+  .info { padding-bottom: 60px; }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
-
-  <img src="https://uploads.onecompiler.io/447v8k97f/44jaaubcn/WhatsApp%20Image%202026-04-03%20at%2016.20.42.jpeg"
-       alt="Gujarati Trader Logo">
-
-  <div class="trader-name">
-    💎 ગુજરાતી 𝐓𝐑𝐀𝐃𝐄𝐑 💎
+<!-- Live Market Ticker -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ticker-symbol">NIFTY 50</span><span class="ticker-price">22,150.30</span><span class="ticker-change up">▲ +1.2%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">BANKNIFTY</span><span class="ticker-price">48,200.50</span><span class="ticker-change up">▲ +0.8%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">SENSEX</span><span class="ticker-price">73,500.10</span><span class="ticker-change down">▼ -0.3%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">FINNIFTY</span><span class="ticker-price">21,400.20</span><span class="ticker-change up">▲ +1.5%</span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-item"><span class="ticker-symbol">NIFTY 50</span><span class="ticker-price">22,150.30</span><span class="ticker-change up">▲ +1.2%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">BANKNIFTY</span><span class="ticker-price">48,200.50</span><span class="ticker-change up">▲ +0.8%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">SENSEX</span><span class="ticker-price">73,500.10</span><span class="ticker-change down">▼ -0.3%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">FINNIFTY</span><span class="ticker-price">21,400.20</span><span class="ticker-change up">▲ +1.5%</span></div>
   </div>
-
-  <!-- TELEGRAM JOIN BUTTON -->
-  <a href="https://t.me/+tBeVOgpiGsozYWY9"
-     target="_blank"
-     class="cta subscribe-btn">
-    <i class="fab fa-telegram-plane"></i> 𝐉𝐎𝐈𝐍 𝐎𝐔𝐑 𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌
-  </a>
-
-  <h1>India’s Most Trusted Stock Market Community</h1>
-  <p>Free Signals • Daily Analysis • Smart Risk Management</p>
-
-</section>
-
-<section class="info">
-  <div class="card">
-
-    <div class="point">
-      <i class="fa-solid fa-chart-line"></i>
-      <span>Intraday, Options, NIFTY & BANKNIFTY Calls</span>
-    </div>
-
-    <div class="point">
-      <i class="fa-solid fa-bullseye"></i>
-      <span>Accurate Entry, Exit & Target Levels</span>
-    </div>
-
-    <div class="point">
-      <i class="fa-solid fa-shield"></i>
-      <span>Risk Management Focused Strategy</span>
-    </div>
-
-    <div class="point">
-      <i class="fa-solid fa-fire"></i>
-      <span>Daily Free & Premium Market Analysis</span>
-    </div>
-
-  </div>
-</section>
-
-<div class="footer">
-  © 2026 Gujarati Trader • All Rights Reserved
 </div>
 
-<!-- TRACKING SCRIPT -->
+<main>
+  <section class="hero">
+    <div class="logo-wrapper">
+      <div class="logo-glow"></div>
+      <img src="https://uploads.onecompiler.io/447v8k97f/44jaaubcn/WhatsApp%20Image%202026-04-03%20at%2016.20.42.jpeg" alt="Gujarati Trader Logo" loading="eager">
+    </div>
+
+    <div class="live-badge">
+      <span class="live-dot"></span> LIVE MARKET ACTIVE
+    </div>
+
+    <div class="trader-name">💎 Gujarati Trader 💎</div>
+    
+    <h1>India’s Most Trusted Stock Market Community</h1>
+    <p>Free Signals • Daily Analysis • Smart Risk Management</p>
+
+    <a href="https://t.me/+tBeVOgpiGsozYWY9" target="_blank" rel="noopener noreferrer" class="cta subscribe-btn-main" aria-label="Join our Telegram channel">
+      <i class="fab fa-telegram-plane"></i> Join Our Free Telegram
+    </a>
+  </section>
+
+  <section class="info">
+    <div class="section-title reveal">What You Get</div>
+    
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="feature-text">
+          <h3>Expert Calls</h3>
+          <p>Intraday, Options, NIFTY & BANKNIFTY</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <div class="feature-text">
+          <h3>Precision Levels</h3>
+          <p>Accurate Entry, Exit & Target Levels</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="feature-text">
+          <h3>Risk Management</h3>
+          <p>Smart Strategy to Protect Capital</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-fire"></i></div>
+        <div class="feature-text">
+          <h3>Daily Analysis</h3>
+          <p>Free & Premium Market Insights</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Sticky CTA for Mobile -->
+<a href="https://t.me/+tBeVOgpiGsozYWY9" target="_blank" rel="noopener noreferrer" class="sticky-cta subscribe-btn-sticky">
+  <div class="sticky-cta-text">
+    <h4>Join Free Telegram</h4>
+    <span>Get instant market signals</span>
+  </div>
+  <div class="sticky-cta-btn">Join Now <i class="fab fa-telegram"></i></div>
+</a>
+
+<footer class="footer">
+  © <span id="year"></span> Gujarati Trader • All Rights Reserved<br>
+  <span style="opacity: 0.5; margin-top: 5px; display: inline-block; font-size: 10px;">Disclaimer: Investments in stock market are subject to market risks.</span>
+</footer>
+
+<!-- TRACKING & ANIMATION SCRIPT -->
 <script>
-const PAGEVIEW_KEY = "gt_pageview_tracked";
-const SUBSCRIBE_KEY = "gt_subscribe_tracked";
+(function () {
+  "use strict";
 
-/* PAGE VIEW - ONLY ONCE */
-if (!localStorage.getItem(PAGEVIEW_KEY)) {
-    fbq('track', 'PageView');
-    localStorage.setItem(PAGEVIEW_KEY, "true");
-    console.log("✅ PageView tracked");
-}
+  var PAGEVIEW_KEY  = "gt_pageview_tracked";
+  var SUBSCRIBE_KEY = "gt_subscribe_tracked";
 
-/* TELEGRAM JOIN - ONLY ONCE */
-document.querySelector(".subscribe-btn").addEventListener("click", function () {
+  function safeTrack() {
+    if (typeof window.fbq === "function") {
+      try { window.fbq.apply(window, arguments); } catch (e) {}
+    }
+  }
 
-    if (!localStorage.getItem(SUBSCRIBE_KEY)) {
+  // Dynamic Year
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        fbq('track', 'Lead');
-        fbq('trackCustom', 'TelegramSubscribe', {
+  // PageView Tracking
+  try {
+    if (!localStorage.getItem(PAGEVIEW_KEY)) {
+      safeTrack('track', 'PageView');
+      localStorage.setItem(PAGEVIEW_KEY, "true");
+      console.log("✅ PageView tracked");
+    }
+  } catch (e) {
+    safeTrack('track', 'PageView');
+  }
+
+  // Subscribe Tracking (Catches both main and sticky buttons)
+  var buttons = document.querySelectorAll(".subscribe-btn-main, .subscribe-btn-sticky");
+  
+  buttons.forEach(function(btn) {
+    btn.addEventListener("click", function () {
+      try {
+        if (!localStorage.getItem(SUBSCRIBE_KEY)) {
+          safeTrack('track', 'Lead');
+          safeTrack('trackCustom', 'TelegramSubscribe', {
             source: 'Landing Page',
             platform: 'Telegram'
-        });
+          });
+          localStorage.setItem(SUBSCRIBE_KEY, "true");
+          console.log("✅ Subscribe tracked");
+        }
+      } catch (e) {
+        safeTrack('track', 'Lead');
+      }
+    });
+  });
 
-        localStorage.setItem(SUBSCRIBE_KEY, "true");
-        console.log("✅ Subscribe tracked");
-    }
-});
+  // Scroll Reveal Animation
+  var reveals = document.querySelectorAll(".reveal");
+  
+  function checkReveals() {
+    reveals.forEach(function(el) {
+      var elTop = el.getBoundingClientRect().top;
+      if (elTop < window.innerHeight - 50) {
+        el.classList.add("active");
+      }
+    });
+  }
+  
+  window.addEventListener("scroll", checkReveals);
+  window.addEventListener("load", checkReveals);
+})();
 </script>
 
 </body>
